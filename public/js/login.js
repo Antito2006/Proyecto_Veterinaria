@@ -1,44 +1,44 @@
-function login(){
+function login() {
 
     const usuario =
-    document.getElementById(
-        'usuario'
-    ).value;
+        document.getElementById(
+            'usuario'
+        ).value;
 
     const contrasena =
-    document.getElementById(
-        'contrasena'
-    ).value;
+        document.getElementById(
+            'contrasena'
+        ).value;
 
     fetch(
         '/api/usuarios/login',
         {
-            method:'POST',
+            method: 'POST',
 
-            headers:{
+            headers: {
                 'Content-Type':
-                'application/json'
+                    'application/json'
             },
 
-            body:JSON.stringify({
+            body: JSON.stringify({
                 usuario,
                 contrasena
             })
         }
     )
-    .then(r=>r.json())
-    .then(data=>{
+        .then(r => r.json())
+        .then(data => {
 
-        if(data.success){
+            if (data.success) {
 
-            location.href =
-            'admin.html';
+                location.href =
+                    'admin.html';
 
-        }else{
+            } else {
 
-            alert(
-                'Usuario incorrecto'
-            );
-        }
-    });
+                alert(
+                    'Usuario incorrecto'
+                );
+            }
+        });
 }

@@ -8,7 +8,7 @@ class Mascota {
         dueno,
         telefono,
         motivo
-    ){
+    ) {
 
         this.idMascota = idMascota;
         this.nombre = nombre;

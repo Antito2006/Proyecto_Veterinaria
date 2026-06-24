@@ -4,7 +4,7 @@ class Usuario {
         idUsuario,
         usuario,
         contrasena
-    ){
+    ) {
 
         this.idUsuario = idUsuario;
         this.usuario = usuario;

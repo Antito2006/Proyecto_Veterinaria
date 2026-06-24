@@ -1,8 +1,8 @@
 const db = require('../config/db');
 
-exports.login = (req,res)=>{
+exports.login = (req, res) => {
 
-    const {usuario, contrasena} = req.body;
+    const { usuario, contrasena } = req.body;
 
     const sql = `
     SELECT *
@@ -14,22 +14,22 @@ exports.login = (req,res)=>{
     db.query(
         sql,
         [usuario, contrasena],
-        (err,results)=>{
+        (err, results) => {
 
-            if(err){
+            if (err) {
                 return res.status(500).json(err);
             }
 
-            if(results.length > 0){
+            if (results.length > 0) {
 
                 res.json({
-                    success:true
+                    success: true
                 });
 
-            }else{
+            } else {
 
                 res.json({
-                    success:false
+                    success: false
                 });
             }
         }

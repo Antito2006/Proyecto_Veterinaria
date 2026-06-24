@@ -19,23 +19,24 @@ exports.crearMascota = (req, res) => {
 
     const {
         nombre,
-        raza,
+        especie,
         edad,
         dueno,
+        rut,
         telefono,
         motivo
     } = req.body;
 
     const sql = `
     INSERT INTO mascota
-    (nombre, raza, edad, dueno, telefono, motivo)
-    VALUES (?, ?, ?, ?, ?, ?)
+    (nombre, especie, edad, dueno, rut, telefono, motivo)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
     `;
 
     db.query(
         sql,
-        [nombre, raza, edad, dueno, telefono, motivo],
-        (err, result) => {
+        [nombre, especie, edad, dueno, rut, telefono, motivo],
+        (err) => {
 
             if (err) {
                 return res.status(500).json(err);
@@ -54,9 +55,10 @@ exports.editarMascota = (req, res) => {
 
     const {
         nombre,
-        raza,
+        especie,
         edad,
         dueno,
+        rut,
         telefono,
         motivo
     } = req.body;
@@ -65,9 +67,10 @@ exports.editarMascota = (req, res) => {
     UPDATE mascota
     SET
     nombre=?,
-    raza=?,
+    especie=?,
     edad=?,
     dueno=?,
+    rut=?,
     telefono=?,
     motivo=?
     WHERE idMascota=?
@@ -77,14 +80,15 @@ exports.editarMascota = (req, res) => {
         sql,
         [
             nombre,
-            raza,
+            especie,
             edad,
             dueno,
+            rut,
             telefono,
             motivo,
             id
         ],
-        (err, result) => {
+        (err) => {
 
             if (err) {
                 return res.status(500).json(err);
@@ -104,7 +108,7 @@ exports.eliminarMascota = (req, res) => {
     db.query(
         'DELETE FROM mascota WHERE idMascota=?',
         [id],
-        (err, result) => {
+        (err) => {
 
             if (err) {
                 return res.status(500).json(err);
